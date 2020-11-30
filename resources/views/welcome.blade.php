@@ -10,8 +10,22 @@
 
     <title>Hello, world!</title>
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body class="container">
+    <h1>Lista de Posts</h1>
+
+    <ul class="list-group">
+    @foreach($posts as $post)
+        <li class="list-group-item">
+            {{ $post->title }} ({{ count($post->comments) }})
+            <br>
+            @if(count($post->tags))
+                @foreach($post->tags as $tag)
+                    {{ $tag->name }} -
+                @endforeach
+            @endif
+        </li>
+    @endforeach
+    </ul>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
